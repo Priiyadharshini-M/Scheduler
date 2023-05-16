@@ -16,7 +16,6 @@
                 <ng-container *ngIf="checkValue.checked">
                 <input type="text" #textValue class="textbox" (click)="$event.stopPropagation()" (focus)="store(textValue.value)" (blur)="validate(textValue)" value="{{ findInfoByDate(data.date)?.given }}/{{ findInfoByDate(data.date)?.totalSlot }}" />
                 </ng-container>
-                
                 <br>
               </div>
             </div>

@@ -1,0 +1,26 @@
+<p>meeting works!</p>
+<ejs-schedule width="100%" height="550px" class='schedule-cell-dimension' [timeScale]="timeScale"  (popupOpen)="onPopupOpen($event)">
+    <ng-template #cellTemplate let-data>
+      <div *ngIf="data.type === 'workCells'">
+      <div *ngIf="data.date.getDay() === 0 || data.date.getDay() === 6">
+          0/0
+        </div>
+      <div *ngIf="data.date.getDay() !== 0 && data.date.getDay() !== 6">
+          <div class="container">
+              <div class="round">
+                <input type="checkbox" #checkValue name="slotRadio" [id]="data.date.getTime()" [value]="data.date.getTime()" (change)="onCheckChange(checkValue.checked, $event.target)">
+                <label [attr.for]="data.date.getTime()"></label>
+                <ng-container *ngIf="!checkValue.checked">
+                <span class="ms-4" [class]="findInfoByDate(data.date)?.given === findInfoByDate(data.date)?.totalSlot ? 'redColor': ''">{{ findInfoByDate(data.date)?.given }}/{{ findInfoByDate(data.date)?.totalSlot }}</span>
+                </ng-container>
+                <ng-container *ngIf="checkValue.checked">
+                <input type="text" #textValue class="textbox" (click)="$event.stopPropagation()" (focus)="store(textValue.value)" (blur)="validate(textValue)" value="{{ findInfoByDate(data.date)?.given }}/{{ findInfoByDate(data.date)?.totalSlot }}" />
+                </ng-container>
+                
+                <br>
+              </div>
+            </div>
+      </div>
+      </div>
+      </ng-template>
+</ejs-schedule>

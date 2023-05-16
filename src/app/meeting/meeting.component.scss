@@ -1,0 +1,67 @@
+.round {
+    position: relative;
+  }
+  
+  .round label {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 18px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 18px;
+  }
+  
+  .round label:after {
+    border: 2px solid #f6f1f1;
+    border-top: none;
+    border-right: none;
+    content: "";
+    height: 4px;
+    left: 3px;
+    opacity: 0;
+    position: absolute;
+    top: 5px;
+    transform: rotate(-45deg);
+    width: 10px;
+  }
+  
+  .round input[type="checkbox"] {
+    visibility: hidden;
+  }
+  
+  .round input[type="checkbox"]:checked + label {
+    background-color: #a408a7;
+    border-color: #a408a7;
+  }
+  
+  .round input[type="checkbox"]:checked + label:after {
+    opacity: 1;
+  }
+
+.schedule-cell-dimension.e-schedule .e-vertical-view .e-work-hours {
+    background-color: #d8f6e0;
+    width: 75%;
+}
+
+.schedule-cell-dimension.e-schedule .e-vertical-view .checkComplete {
+  background-color: #fff;
+}
+.schedule-cell-dimension.e-schedule .e-vertical-view .checkComplete .round input {
+  padding: 5px;
+  border : 3px solid blue;
+  border-radius: 5px;
+}
+.schedule-cell-dimension.e-schedule .e-vertical-view .e-work-hours:has(.redColor) {
+  background-color: rgb(226, 118, 118);
+}
+label:has(+ .redColor) {
+  /* visibility: hidden; */
+  display: none !important;
+}
+.schedule-cell-dimension.e-schedule .round .textbox {
+    width: 70px;
+    height: 30px;
+}

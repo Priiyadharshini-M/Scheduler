@@ -33,6 +33,7 @@
   }
   
   .round input[type="checkbox"]:checked + label {
+    margin-top: 8%;
     background-color: #a408a7;
     border-color: #a408a7;
   }
@@ -49,10 +50,20 @@
 .schedule-cell-dimension.e-schedule .e-vertical-view .checkComplete {
   background-color: #fff;
 }
-.schedule-cell-dimension.e-schedule .e-vertical-view .checkComplete .round input {
-  padding: 5px;
+.schedule-cell-dimension.e-schedule .e-vertical-view .checkComplete .round .blueborder {
+  padding: 3px;
   border : 3px solid blue;
   border-radius: 5px;
+  width: 50%;
+  margin-left: 30%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+.schedule-cell-dimension.e-schedule .e-vertical-view .checkComplete .round {
+  display: flex;
+}
+.schedule-cell-dimension.e-schedule .e-vertical-view .checkComplete .round input {
+  border : none;
 }
 .schedule-cell-dimension.e-schedule .e-vertical-view .e-work-hours:has(.redColor) {
   background-color: rgb(226, 118, 118);
@@ -62,6 +73,19 @@ label:has(+ .redColor) {
   display: none !important;
 }
 .schedule-cell-dimension.e-schedule .round .textbox {
-    width: 70px;
-    height: 30px;
+    width: 30%;
+    height: 27px;
 }
+.toast-top-right {
+  top: 70px !important
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+// /* Firefox */
+// input[type=number] {
+//   -moz-appearance: textfield;
+// }

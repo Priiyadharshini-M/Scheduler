@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { AgendaService, DayService, MonthService, ResourceDirective, ResourcesDirective, TimeScaleModel, WeekService, WorkWeekService } from '@syncfusion/ej2-angular-schedule';
 
 @Component({
@@ -10,7 +11,7 @@ import { AgendaService, DayService, MonthService, ResourceDirective, ResourcesDi
 })
 export class MeetingComponent {
   public previousValue = ''
-  constructor() {}
+  constructor(private toastrService: ToastrService) {}
   public onPopupOpen(args: any) {
     args.cancel = true;
   }
@@ -25,10 +26,19 @@ export class MeetingComponent {
   store(value:any) {
     this.previousValue = value
   }
-  validate(textValue: any) {
-    const [given,total] = textValue.value.split('/')
-    if(Number(total)<Number(given)) {
-      alert('The given slot exceeds tha available slot')
+  validate(textValue: any, givenSlot: any) {
+    const total = textValue.value
+    const [given] = givenSlot.innerHTML.split('/')
+    console.log('total', total);
+    console.log('given', given);
+    let pattern = /^\d+$/;
+    if(!total.match(pattern) || Number(total)<0 || Number(total)>99) {
+      this.toastrService.error('Only slots from 0 to 99 are allowed', 'Error!');
+      textValue.value = this.previousValue;
+    }
+    else if(Number(total)<Number(given)) {
+      // alert('The given slot exceeds tha available slot')
+      this.toastrService.error('Less than booked slots', 'Error!');
       textValue.value = this.previousValue;
     }
   }
@@ -38,7 +48,7 @@ export class MeetingComponent {
     slotCount: 1
   }
 
-  public infos : any = [
+  public infos : Object[] = [
     {
       totalSlot: 4,
       given: 1,

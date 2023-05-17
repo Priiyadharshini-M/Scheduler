@@ -14,7 +14,8 @@
                 <span class="ms-4" [class]="findInfoByDate(data.date)?.given === findInfoByDate(data.date)?.totalSlot ? 'redColor': ''">{{ findInfoByDate(data.date)?.given }}/{{ findInfoByDate(data.date)?.totalSlot }}</span>
                 </ng-container>
                 <ng-container *ngIf="checkValue.checked">
-                <input type="text" #textValue class="textbox" (click)="$event.stopPropagation()" (focus)="store(textValue.value)" (blur)="validate(textValue)" value="{{ findInfoByDate(data.date)?.given }}/{{ findInfoByDate(data.date)?.totalSlot }}" />
+                <!-- <input type="text" #textValue class="textbox" (click)="$event.stopPropagation()" (focus)="store(textValue.value)" (blur)="validate(textValue)" value="{{ findInfoByDate(data.date)?.given }}/{{ findInfoByDate(data.date)?.totalSlot }}" /> -->
+                <div class="blueborder"><span #givenSlot >{{ findInfoByDate(data.date)?.given }}/</span><input type="number" #textValue class="textbox" (click)="$event.stopPropagation()" (focus)="store(textValue.value)" (blur)="validate(textValue, givenSlot)" value="{{ findInfoByDate(data.date)?.totalSlot }}" /></div>
                 </ng-container>
                 <br>
               </div>
